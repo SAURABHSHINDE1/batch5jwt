@@ -31,6 +31,7 @@ loginfrom.addEventListener("submit" , async(e)=>{
 
     if(data.success){
         alert("login successfully")
+        window.location.href = "../dashboard/index.html"
     }
     else{
         alert("invalid credencials ")

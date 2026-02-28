@@ -1,4 +1,4 @@
-import {loginUser, registerUser} from'../models/usermodel.js'
+import {dashBoard, loginUser, registerUser} from'../models/usermodel.js'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 
@@ -74,4 +74,24 @@ export const loginUserController = async(req , res)=>{
          return res.json({success:false , message :error.message})
     }
 
+}
+
+
+export const dashBoardController = async(req , res) =>{
+    try{
+
+        let id = req.user.id
+
+        let result = await dashBoard(id)
+
+        if(result.length == 0){
+            return res.json({success : false , message :"user not found"})
+        }
+
+        return res.json({success: true , message :result})
+
+    }
+    catch(error){
+        return res.json({success : false , message :error.message})
+    }
 }

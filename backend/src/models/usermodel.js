@@ -34,3 +34,21 @@ export const loginUser = async(email)=>{
      }
 
 }
+
+
+export const dashBoard = async(id)=>{
+
+
+    try{
+            let sql = "select * from user where id = ?"
+        
+            let [rows] = await db.execute(sql , [id])
+
+            return rows
+
+    }
+    catch(error){
+        return error
+    }
+
+}
